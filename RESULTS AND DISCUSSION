@@ -1,0 +1,41 @@
+Step 1: System Startup
+System Message:
+Welcome to the Smart NLP Chatbot System
+---------------------------------------
+Hello! I am your AI Chatbot. 
+You can ask me questions about AI, technology, or general queries.
+Type 'exit' to quit the chat.
+
+Step 2: User Question 1
+User Input:
+Hello, how are you?
+System Response:
+Hi there! How can I assist you today?
+
+Step 3: User Question 2
+User Input:
+What is AI?
+System Response:
+AI stands for Artificial Intelligence, enabling machines to simulate human intelligence.
+
+Step 4: User Question 3
+User Input:
+Thank you
+System Response:
+You're welcome! Happy to help.
+
+Step 5: User Question 4 (Unknown Query)
+User Input:
+Tell me about space travel
+System Response:
+I'm not sure about that. Could you please elaborate?
+
+
+Step 6: Exit the System
+User Input:
+exit
+System Response:
+Thank you for using the Smart NLP Chatbot System!
+Have a great day!
+---------------------------------------
+Chat session terminated successfully.
