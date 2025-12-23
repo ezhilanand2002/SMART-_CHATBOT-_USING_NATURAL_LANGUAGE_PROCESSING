@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart NLP Chatbot</title>
+<style>
+body { 
+background-color: #f0f8ff; 
+font-family: 'Poppins', sans-serif; 
+display:flex; 
+flex-direction:column; 
+align-items:center; 
+justify-content:center; 
+height:100vh; 
+}
+h1 { 
+color:#0077b6; 
+text-align:center; 
+margin-bottom:10px; 
+}
+.chat-container { 
+width:380px; height:480px; 
+background:white; 
+border-radius:12px; 
+box-shadow:0 0 10px rgba(0,0,0,0.2); 
+display:flex; 
+flex-direction:column; 
+justify-content:space-between; 
+overflow:hidden; 
+}
+.messages {
+ padding:15px; flex-grow:1; 
+overflow-y:auto; 
+font-size:14px;
+ }
+.user-msg { 
+text-align:right; 
+color:#0d6efd; 
+margin:6px 0; 
+}
+.ai-msg { 
+text-align:
+left; color:#006400; 
+
+
+
+background:#d1f7d1; 
+padding:6px 10px; 
+border-radius:10px; 
+margin:6px 0; 
+display:inline-block; 
+}
+input { 
+border:none; 
+padding:10px; 
+width:80%; 
+border-top:1px solid #ccc; 
+}
+button { 
+width:20%; 
+background-color:#0077b6; 
+border:none; color:white; 
+font-weight:bold; 
+}
+</style>
+</head>
+<body>
+<h1>Smart NLP Chatbot</h1>
+<div class="chat-container">
+  <div class="messages" id="chatbox">
+    <div class="ai-msg">Hello! I am your AI Chatbot. How can I help you today?</div>
+  </div>
+  <div>
+    <input id="userInput" type="text" placeholder="Type your query..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+<script>
+
+function sendMessage() {
+  let userInput = document.getElementById("userInput").value;
+  if(userInput.trim() === "") return;
+  let chatbox = document.getElementById("chatbox");
+  chatbox.innerHTML += `<div class='user-msg'>${userInput}</div>`;
+  document.getElementById("userInput").value = "";
+  fetch("/get", {
+            method:"POST",
+    body:new URLSearchParams({msg:userInput}),
+    headers:{"Content-Type":"application/x-www-form-urlencoded"}
+  })
+  .then(response => response.json())
+  .then(data => {
+    chatbox.innerHTML += `<div class='ai-msg'>${data.response}</div>`;
+    chatbox.scrollTop = chatbox.scrollHeight;
+  });
+}
+</script>
+</body>
+</html>
